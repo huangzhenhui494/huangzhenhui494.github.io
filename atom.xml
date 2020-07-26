@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-07-26T06:39:25.179Z</updated>
+  <updated>2020-07-26T12:48:38.304Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>github和hexo搭建个人博客</title>
+    <link href="http://yoursite.com/2020/07/26/github%E5%92%8Chexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://yoursite.com/2020/07/26/github%E5%92%8Chexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</id>
+    <published>2020-07-26T12:48:03.000Z</published>
+    <updated>2020-07-26T12:48:38.304Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-Linux下安装nodeJs-hexo"><a href="#1-Linux下安装nodeJs-hexo" class="headerlink" title="1 Linux下安装nodeJs hexo"></a>1 Linux下安装nodeJs hexo</h2><h5 id="①-安装hexo框架-cnpm-install-g-hexo-cli"><a href="#①-安装hexo框架-cnpm-install-g-hexo-cli" class="headerlink" title="① 安装hexo框架 cnpm install -g hexo-cli"></a>① 安装hexo框架 cnpm install -g hexo-cli</h5><pre><code>hexo -v</code></pre><h5 id="②-创建blog目录-在该目录下"><a href="#②-创建blog目录-在该目录下" class="headerlink" title="② 创建blog目录,在该目录下"></a>② 创建blog目录,在该目录下</h5><p>初始化 启动 开始写博客</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br><span class="line">hexo s</span><br><span class="line">hexo n &#39;写博客&#39;</span><br></pre></td></tr></table></figure><h5 id="成功后-INFO-Created-usr-local-blog-source-posts-写博客-md"><a href="#成功后-INFO-Created-usr-local-blog-source-posts-写博客-md" class="headerlink" title="成功后 : INFO  Created: /usr/local/blog/source/_posts/写博客.md"></a>成功后 : INFO  Created: /usr/local/blog/source/_posts/写博客.md</h5><p>到blog目录: 生成后 重新启动 </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure><hr><h2 id="2-Linux下配置git"><a href="#2-Linux下配置git" class="headerlink" title="2 Linux下配置git"></a>2 Linux下配置git</h2><h4 id="github创建-huangzhenhui494-github-io-仓库"><a href="#github创建-huangzhenhui494-github-io-仓库" class="headerlink" title="github创建 huangzhenhui494.github.io 仓库"></a>github创建 huangzhenhui494.github.io 仓库</h4><h4 id="Linux服务器创建ssh-key信息"><a href="#Linux服务器创建ssh-key信息" class="headerlink" title="Linux服务器创建ssh-key信息"></a>Linux服务器创建ssh-key信息</h4><h5 id="①-命令-ssh-keygen-t-rsa-一直空格"><a href="#①-命令-ssh-keygen-t-rsa-一直空格" class="headerlink" title="① 命令 ssh-keygen -t rsa, 一直空格"></a>① 命令 ssh-keygen -t rsa, 一直空格</h5><h5 id="②-获取公钥-cat-root-ssh-id-rsa"><a href="#②-获取公钥-cat-root-ssh-id-rsa" class="headerlink" title="② 获取公钥 cat /root/.ssh/id_rsa"></a>② 获取公钥 cat /root/.ssh/id_rsa</h5><p>github个人信息下面Settings -&gt; SSH and GPG keys 新增公钥</p><h5 id="连接测试成功后设置账号信息"><a href="#连接测试成功后设置账号信息" class="headerlink" title="连接测试成功后设置账号信息"></a>连接测试成功后设置账号信息</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br><span class="line">git config --global user.name &quot;huang.....&quot; </span><br><span class="line">git config --global user.email &quot;hzhl....gmail....&quot;</span><br></pre></td></tr></table></figure><hr><h2 id="3-配置"><a href="#3-配置" class="headerlink" title="3 配置"></a>3 配置</h2><p>安装工具 : npm install hexo-deployer-git –save<br>vim /usr/local/blog/_config.yml 修改以下信息为</p><p> ##Docs: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">https://hexo.io/docs/deployment.html</a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:huang....&#x2F;huang.....github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure><p>最后在blog目录下deploy</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;1-Linux下安装nodeJs-hexo&quot;&gt;&lt;a href=&quot;#1-Linux下安装nodeJs-hexo&quot; class=&quot;headerlink&quot; title=&quot;1 Linux下安装nodeJs hexo&quot;&gt;&lt;/a&gt;1 Linux下安装nodeJs hexo&lt;/
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>H第一篇博客文章</title>
